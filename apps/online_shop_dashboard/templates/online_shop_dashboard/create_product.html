@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Create Product</title>
+</head>
+
+<body>
+    <h2>Create Product</h2>
+    <form action="/products/create" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            <tbody style = "vertical-align: top;">
+            <tr>
+                <td><label for="">product name:</label></td>
+                <td><input type="text" name="product_name"> </td>
+            </tr>
+            <tr>
+                <td><label for="">price:</label></td>
+                <td><input type="text" name="product_price"></td>
+            </tr>
+            <tr>
+                <td><label for="">Category:</label></td>
+                <td><input type="text" name="product_category"></td>
+            </tr>
+            <tr>
+                <td><label for="">image:</label></td>
+                <td><input type="file" name="product_image"></td>
+            </tr>
+            <tr>
+                <td><label for="">About Product:</label></td>
+                <td><textarea name="product_details" id="" cols="30" rows="10"></textarea></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value = "add product"></td>
+            </tr>
+    
+        </tbody>
+    </form>
+</body>
+
+</html>

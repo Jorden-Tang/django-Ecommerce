@@ -1,0 +1,21 @@
+body{
+    background-image: url('https://wallpapersite.com/images/pages/pic_h/7509.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    font-family: 'Numans', sans-serif;
+}
+
+#register_form{
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+.card-title{
+    color: white;
+}
+
+
+.text-center{
+    color: white;
+}

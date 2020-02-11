@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <title>Candy Shop: {{p.name}}</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'online_shop_dashboard/css/show_product.css'%}">
+
+</head>
+
+<body>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        {% for c in category%}
+        <a href="product/category/{{c.id}}">{{c.name}}</a>
+        {% endfor %}
+    </div>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Home</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a onclick="openNav()">Shop By Category</a> </li>
+                    <li><a href="/products/order">Orders</a></li>
+                </ul>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right active">
+                    <li><a href="/products/shopping_cart">Shopping Cart ({{user_cart|length}})</a></li>
+                    {% if "user_id" in request.session%}
+                    <li><a href="/log_out">Log Out</a></li>
+                    {% else %}
+                    <li><a href="/login">Log In</a></li>
+                    {% endif %}
+
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- snipp1 -->
+    <div class="container">
+        <div class="card">
+            <div class="container-fliud">
+                <div class="wrapper row">
+                    <div class="preview col-md-6">
+                        <div class="preview-pic tab-content">
+                            <div class="tab-pane active" id="pic-1"><img src="{{p.image.url}} ">
+                            </div>
+                            <div class="tab-pane" id="pic-2"><img src="{{p.image.url}}" /></div>
+                            <div class="tab-pane" id="pic-3"><img src="{{p.image.url}}" /></div>
+                            <div class="tab-pane" id="pic-4"><img src="{{p.image.url}}" /></div>
+                            <div class="tab-pane"><img src="{{p.image.url}}" /></div>
+                        </div>
+                        <ul class="preview-thumbnail nav nav-tabs">
+                            <li class="active"><a data-target="#pic-1" data-toggle="tab"><img
+                                        src="https://www.williams-sonoma.com/wsimgs/rk/images/dp/wcm/201938/0875/img15c.jpg" /></a>
+                            </li>
+                            <li><a data-target="#pic-2" data-toggle="tab"><img
+                                        src="https://www.williams-sonoma.com/wsimgs/rk/images/dp/wcm/201938/0875/img15c.jpg" /></a>
+                            </li>
+                            <li><a data-target="#pic-3" data-toggle="tab"><img
+                                        src="https://www.williams-sonoma.com/wsimgs/rk/images/dp/wcm/201938/0875/img15c.jpg" /></a>
+                            </li>
+                            <li><a data-target="#pic-4" data-toggle="tab"><img
+                                        src="https://www.williams-sonoma.com/wsimgs/rk/images/dp/wcm/201938/0875/img15c.jpg" /></a>
+                            </li>
+                            <li><a data-target="#pic-5" data-toggle="tab"><img
+                                        src="https://www.williams-sonoma.com/wsimgs/rk/images/dp/wcm/201938/0875/img15c.jpg" /></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="details col-md-6">
+                        <h3 class="product-title"> {{p.name}} </h3>
+                        <div class="rating">
+                            <div class="stars">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+                            <span class="review-no">41 reviews</span>
+                        </div>
+                        <p class="product-description">
+                            {{p.details}}
+                        </p>
+                        <h4 class="price">current price: <span>$ {{p.price}}</span></h4>
+                        <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong>
+                        </p>
+                        <select class="browser-default custom-select">
+                            <option selected>Select Amount</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        <br>
+                        <div class="action">
+                            <button class="add-to-cart btn btn-default" type="button">add to cart</button>
+                            <button class="add-to-cart btn btn-default" type="button"> ♥</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+            /* Set the width of the side navigation to 250px */
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "200px";
+            }
+    
+            /* Set the width of the side navigation to 0 */
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+            }
+        </script>
+</body>
+
+</html>
